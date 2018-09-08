@@ -2,10 +2,13 @@ doctype html
 html
   head
     title
-      | BobRobertsRailsCompetencyTest
+      | Awesome Articles
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    = render 'layouts/navbar'
+    .container-fluid
+      = yield

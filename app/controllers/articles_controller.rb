@@ -1,15 +1,16 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
-  access all: [:index, :show, :new, :edit, :create, :update, :destroy], user: :all
+  before_action :set_article, only: %i[show edit update destroy]
+  access user: %i[index show], editor: :all, admin: %i[index show]
 
   # GET /articles
   def index
-    @articles = Article.all
+    @articles = Article.all.includes(:user)
   end
 
   # GET /articles/1
-  def show
-  end
+  def show; end
 
   # GET /articles/new
   def new
@@ -17,8 +18,7 @@ class ArticlesController < ApplicationController
   end
 
   # GET /articles/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /articles
   def create
@@ -47,13 +47,14 @@ class ArticlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_article
-      @article = Article.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def article_params
-      params.require(:article).permit(:title, :content, :category, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_article
+    @article = Article.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def article_params
+    params.require(:article).permit(:title, :content, :category, :user_id)
+  end
 end

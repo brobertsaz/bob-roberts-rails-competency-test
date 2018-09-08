@@ -15,13 +15,21 @@ table
     - @articles.each do |article|
       tr
         td = article.title
-        td = article.content
+        td = article.content.truncate(80)
         td = article.category
-        td = article.user
-        td = link_to 'Show', article
-        td = link_to 'Edit', edit_article_path(article)
-        td = link_to 'Destroy', article, data: { confirm: 'Are you sure?' }, method: :delete
+        td = article.user.email
+        td
+          = link_to article do
+            i.fa.fa-eye.text-success
+        td
+          - if current_user&.id == article.user_id
+            = link_to edit_article_path(article) do
+              i.fa.fa-edit.text-warning
 
+        td
+          - if current_user&.id == article.user_id
+            = link_to article, data: { confirm: 'Are you sure?' }, method: :delete do
+              i.fa.fa-trash.text-danger
 br
 
 = link_to 'New Article', new_article_path

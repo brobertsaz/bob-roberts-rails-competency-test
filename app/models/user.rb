@@ -14,4 +14,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :articles
+  validates :email, presence: true
+  validates :password, presence: true
 end
