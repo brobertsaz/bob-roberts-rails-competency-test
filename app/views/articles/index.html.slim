@@ -1,35 +1,38 @@
-h1 Listing articles
+.p-2
+  .clearfix
+    h1.float-left
+      | Listing Articles
 
-table
-  thead
-    tr
-      th Title
-      th Content
-      th Category
-      th User
-      th
-      th
-      th
+    = link_to 'New Article', new_article_path, class: 'btn btn-primary float-right mt-2'
 
-  tbody
-    - @articles.each do |article|
+  table
+    thead
       tr
-        td = article.title
-        td = article.content.truncate(80)
-        td = article.category
-        td = article.user.email
-        td
-          = link_to article do
-            i.fa.fa-eye.text-success
-        td
-          - if current_user&.id == article.user_id
-            = link_to edit_article_path(article) do
-              i.fa.fa-edit.text-warning
+        th Title
+        th Content
+        th Category
+        th User
+        th
+        th
+        th
 
-        td
-          - if current_user&.id == article.user_id
-            = link_to article, data: { confirm: 'Are you sure?' }, method: :delete do
-              i.fa.fa-trash.text-danger
-br
+    tbody
+      - @articles.each do |article|
+        tr
+          td = article.title
+          td = article.content.truncate(80)
+          td = article.category
+          td = article.user.email
+          td
+            = link_to article do
+              i.fa.fa-eye.text-success
+          td
+            - if current_user&.id == article.user_id
+              = link_to edit_article_path(article) do
+                i.fa.fa-edit.text-warning
 
-= link_to 'New Article', new_article_path
+          td
+            - if current_user&.id == article.user_id
+              = link_to article, data: { confirm: 'Are you sure?' }, method: :delete do
+                i.fa.fa-trash.text-danger
+  br

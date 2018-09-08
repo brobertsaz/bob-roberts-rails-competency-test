@@ -1,0 +1,6 @@
+- flash.each do |key, value|
+  .mt-2
+    div class="#{flash_class(key)}"
+      = value
+      button.close[data-dismiss="alert"]
+        | x

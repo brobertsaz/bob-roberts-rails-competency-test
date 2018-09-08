@@ -1,5 +1,13 @@
-h1 Welcome to Awesome Articles
-p You will need to sign up to view all articles.
+.clearfix
+  h1.float-left
+    | Welcome to Awesome Articles
+
+  = link_to 'View All', articles_path, class: 'btn btn-primary float-right mt-2'
+
+p
+  ' You will need to sign up to
+  a href='/articles' view all articles.
+
 
 .container.text-center
   .row
@@ -11,4 +19,7 @@ p You will need to sign up to view all articles.
           hr
           - Article.where(category: category.capitalize).limit(3).each do |article|
             .row.text-center
-              = link_to article.title, article_path(article)
+              - if current_user
+                = link_to article.title, article_path(article)
+              - else
+                = article.title

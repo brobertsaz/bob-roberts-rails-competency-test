@@ -2,7 +2,7 @@
 
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show edit update destroy]
-  access user: %i[index show], editor: :all, admin: %i[index show]
+  access all: %i[:index], user: %i[index show], editor: :all, admin: %i[index show]
 
   # GET /articles
   def index

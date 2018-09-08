@@ -9,6 +9,7 @@ html
     = stylesheet_link_tag    'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = render 'layouts/navbar'
+    == render 'layouts/navbar'
+    == render 'layouts/alerts'
     .container-fluid
       = yield
