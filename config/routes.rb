@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    resources :users
-  end
-
   get 'pages/home'
   resources :articles
   devise_for :users
