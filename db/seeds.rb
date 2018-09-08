@@ -8,11 +8,15 @@ categories = %w[Tech Sport Lifestyle Politics]
   )
 end
 
+User.create(email: 'editor@example.com', password: 'Password1', role: :editor)
+
 30.times do
   Article.create(
     user: User.all.sample,
     category: categories.sample,
     title: Faker::Lorem.sentence(4),
     content: Faker::Lorem.paragraph(4)
-  )
-end
+    )
+  end
+
+User.create(email: 'admin@example.com', password: 'Password1', role: :admin)

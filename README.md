@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Setup
 
-Things you may want to cover:
+- Clone the repo
+- cd into project and run `bundle`
+- run `rails db:setup`
+- run `rails s`
 
-* Ruby version
+You can then login as admin with `admin@example.com` password: `Password1`
+You can then login as editor with `editor@example.com` password: `Password1`
 
-* System dependencies
+### Todo
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Implement the Admin functions
+- Better layout for the list of articles
+- Change the `categories` to be either user or admin created and not hard coded
+- Add more `integration` tests
